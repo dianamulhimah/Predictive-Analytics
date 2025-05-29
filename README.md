@@ -139,7 +139,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
 **Distribusi Kelas Klasifikasi Kemiskinan**
-![Distribusi Kelas](https://github.com/user-attachments/assets/8514cbc0-53f8-4ec1-a5de-6b0dc223d4dc)
+![Distribusi Kelas](https://github.com/user-attachments/assets/8514cbc0-53f8-4ec1-a5de-6b0dc223d4dc)<br/>
 * `Tidak Miskin`: sekitar 450+ sampel
 * `Miskin`: sekitar 60-70 sampel
 * Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.
@@ -160,14 +160,14 @@ Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1
 - Provinsi seperti **Papua, Papua Barat, NTT, Maluku** memiliki proporsi tertinggi dalam klasifikasi `miskin` oleh model atau label data, mencerminkan kemungkinan tingkat kesejahteraan rendah atau keterbatasan infrastruktur/layanan.
 - Terdapat banyak provinsi dengan rata-rata 0, artinya tidak ada satupun data yang diklasifikasikan `miskin` dari provinsi tersebut. Contoh: **DKI Jakarta, Jawa Barat, Jawa Tengah, Kalimantan Timur, Kalimantan Tengah, Bengkulu, Banten, dll**.
 * Dikarenakan ketimpangan distribusi data, di mana sebagian besar "kasus kemiskinan" hanya muncul dari provinsi tertentu.
+* **Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
 ![Rata-rata kemiskinan per kota](https://github.com/user-attachments/assets/556ab5b6-ddd1-4897-96aa-4881deb361ce)
-**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
 * Terdapat 514 kota unik, dan sebagian besar hanya memiliki 1 sampel. Rata-rata kemiskinan per kota adalah 0 atau 1 → **diskrit dan tidak informatif secara statistik** karena terlalu sedikit datanya per kota.
 Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkinan hanya 1 rumah tangga, dan diklasifikasikan miskin. Banyak kota besar seperti `Kota Bandung`, `Balikpapan`, `Bitung`, dll memiliki nilai 0.0.
 
 **Multivariate Analysis**
 **Heatmap Korelasi (Correlation Matrix)**
-![Correlation Matrix](https://github.com/user-attachments/assets/17071e2c-06dc-4c0d-862b-37247845646b)<br/>
+![Correlation Matrix](https://github.com/user-attachments/assets/17071e2c-06dc-4c0d-862b-37247845646b)
 **Korelasi terhadap `klasifikasi_kemiskinan`:**
   * **`persen_miskin`**: **positif kuat (0.76)** Wilayah dengan persentase penduduk miskin tinggi, cenderung masuk klasifikasi miskin.
   * Fitur lain memiliki **korelasi negatif** dengan klasifikasi kemiskinan:
@@ -176,11 +176,11 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
     * `akses_sanitasi`: -0.44
     * `umur_harapan`: -0.45
     * Artinya: Semakin tinggi kualitas hidup (IPM, pengeluaran, harapan hidup, sanitasi), semakin kecil kemungkinan wilayah diklasifikasikan sebagai miskin.
-**Korelasi antar fitur:** <br/>
+**Korelasi antar fitur:**
   * Korelasi **sangat tinggi** antara:
    * `ipm`, `pengeluaran_kapita`, `lama_sekolah`: \~0.87 Bisa jadi ada multikolinearitas. 
-   * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.
-**Pairplot (Scatter Matrix)** <br/>
+   * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.<br/>
+**Pairplot (Scatter Matrix)**
 ![Scatter Matrix](https://github.com/user-attachments/assets/fb7c4db8-c183-4f0a-b8e6-338e67668e34)
 * Hubungan linier terlihat jelas antara: `pengeluaran_kapita`, `ipm`, `lama_sekolah` Korelasi kuat & searah.
 * `klasifikasi_kemiskinan` tampak sebagai bilangan diskrit (0 atau 1) di sumbu Y: Terdapat pemisahan cukup jelas pada `persen_miskin`, `ipm`, `pengeluaran_kapita`, artinya fitur-fitur ini informatif untuk membedakan status kemiskinan.
@@ -231,13 +231,13 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
 * **Alasan**: Pemisahan data menjadi data latih dan data uji bertujuan untuk mengukur performa model secara adil pada data yang belum pernah dilihat sebelumnya. Penggunaan `stratify=y` memastikan distribusi kelas tetap proporsional.
 
 6. **Penyeimbangan Data Menggunakan SMOTE**
-* **Langkah**:
+* **Kode**:
   ```python
   from imblearn.over_sampling import SMOTE
   smote = SMOTE(random_state=42)
   X_train_smote, y_train_smote = smote.fit_resample(X_train, y_train)
   ```
-* **Kode**: Dataset menunjukkan ketidakseimbangan label `klasifikasi_kemiskinan`, di mana kelas minoritas (1.0) jauh lebih sedikit daripada mayoritas (0.0). SMOTE (Synthetic Minority Oversampling Technique) digunakan untuk menyeimbangkan kelas dengan mensintesis data baru untuk kelas minoritas sehingga model tidak bias terhadap kelas mayoritas.
+* **Alasan**: Dataset menunjukkan ketidakseimbangan label `klasifikasi_kemiskinan`, di mana kelas minoritas (1.0) jauh lebih sedikit daripada mayoritas (0.0). SMOTE (Synthetic Minority Oversampling Technique) digunakan untuk menyeimbangkan kelas dengan mensintesis data baru untuk kelas minoritas sehingga model tidak bias terhadap kelas mayoritas.
 
 
 ## Modeling

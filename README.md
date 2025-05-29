@@ -131,7 +131,6 @@ Pembersihan dan imputasi data
 
 - Pada tahap ini, dilakukan pembersihan dan imputasi data terhadap atribut `akses_sanitasi`, `akses_air`, dan `pengangguran`. Ditemukan nilai 0 yang secara logika tidak mungkin terjadi dan dianggap sebagai missing value. Nilai 0 digantikan dengan NaN, lalu di-imputasi menggunakan nilai median, agar tidak terlalu terpengaruh oleh outlier.
 
-![Bloxplot](https://
 ![Bloxplot](https://github.com/user-attachments/assets/ae677a9c-3342-40a9-a4a3-0a5c07a38e7f)
 
 - `persen_miskin` Terlihat banyak outlier di atas (daerah dengan persentase kemiskinan sangat tinggi). Median kemiskinan sekitar 10–12%.
@@ -146,6 +145,21 @@ Pembersihan dan imputasi data
 - `klasifikasi_kemiskinan` Mayoritas daerah masuk kategori `0` (tidak miskin), hanya sedikit yang termasuk `1` (miskin)`. Ini menunjukkan imbalance class (perlu penanganan khusus saat modeling, seperti oversampling SMOTE.
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
+
+1. Distribusi Kelas Klasifikasi Kemiskinan
+![Distribusi Kelas](attachment:18ff883f-16aa-486d-b9ad-6280d7992723.png)
+* `Tidak Miskin`: sekitar 450+ sampel
+* `Miskin`: sekitar 60-70 sampel
+* Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.
+    
+2. Distribusi Provinsi dan Kota
+![Distribusi Provinsi dan Kota](attachment:7b70dc6a-7e8a-43be-934a-681ad5c36d76.png)
+* Distribusi Provinsi:
+  - Provinsi dengan jumlah sampel tertinggi: **Jawa Timur, Jawa Tengah, Sumatera Utara, Papua**
+  - Provinsi dengan jumlah sampel terendah: **Kalimanatan Utara, D.I. Yogyakarta, Sulawesi Barat**
+  - Distribusi provinsi tidak merata: Provinsi di Jawa dan Sumatera mendominasi data. Hal ini berpotensi menyebabkan model overfitting terhadap pola dari daerah-daerah tersebut.
+* Distribusi Kota:
+  - Setiap kota hanya memiliki 1 sampel, ditunjukkan oleh bar setinggi 1.0 dan sangat rapat.
 
 
 ## Data Preparation

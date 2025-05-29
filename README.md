@@ -355,6 +355,56 @@ Confusion matrix membantu melihat detail kesalahan prediksi:
 * Evaluasi tidak hanya dilihat dari akurasi, tapi juga perlu mempertimbangkan **F1-score**, terutama dalam masalah ketimpangan kelas seperti klasifikasi tingkat kemiskinan.
 
 
+
+# Evaluasi Model Klasifikasi
+
+## Metrik Evaluasi
+
+### Precision
+Mengukur ketepatan prediksi positif — dari semua yang diprediksi sebagai positif, berapa banyak yang benar-benar positif.
+
+**Formula:**
+
+$$
+\text{Precision} = \frac{\text{TP}}{\text{TP + FP}}
+$$
+
+---
+
+### Recall (Sensitivity)
+Mengukur seberapa banyak data positif yang berhasil dikenali.
+
+**Formula:**
+
+$$
+\text{Recall} = \frac{\text{TP}}{\text{TP + FN}}
+$$
+
+---
+
+### F1-Score
+Merupakan harmonic mean dari Precision dan Recall. Digunakan saat diperlukan keseimbangan antara keduanya.
+
+**Formula:**
+
+$$
+\text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}
+$$
+
+---
+
+## Hasil Evaluasi Model
+
+| Model                     | Akurasi | Precision | Recall | F1-Score |
+|--------------------------|---------|-----------|--------|----------|
+| Decision Tree (DT)       | 0.9612  | 0.9709    | 0.9612 | 0.9635   |
+| Random Forest (RF)       | 0.9612  | 0.9651    | 0.9612 | 0.9624   |
+| Support Vector Machine (SVM) | 0.9417  | 0.9534    | 0.9417 | 0.9453   |
+| K-Nearest Neighbors (KNN) | 0.9320  | 0.9486    | 0.9320 | 0.9369   |
+| Naive Bayes (NB)         | 0.8835  | 0.9308    | 0.8835 | 0.8972   |
+
+
+
 ## Referensi
 [^1]: Badan Pusat Statistik Indonesia, “Profil Kemiskinan di Indonesia Maret 2023,” Badan Pusat statistik, no. 57, 2023.
 [^2]:	N. P. N. Hendayanti and M. Nurhidayati, “KLASIFIKASI TINGKAT KEPARAHAN KEMISKINAN PROVINSI DI INDONESIA DENGAN ANALISIS DISKRIMINAN,” Math Educa Journal, vol. 5, no. 1, 2021, doi: 10.15548/mej.v5i1.2510.

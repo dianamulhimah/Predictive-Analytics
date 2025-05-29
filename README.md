@@ -45,11 +45,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - `PDRB atas Dasar Harga Konstan menurut Pengeluaran (Rupiah)`: Produk Domestik Regional Bruto wilayah berdasarkan pengeluaran.
 - `Klasifikasi Kemiskinan`: (**Target Label**) Kategori tingkat kemiskinan: `0` Tidak Miskin `1` Miskin
 
-
-Rubrik/Kriteria Tambahan (Opsional):
-Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
-
-Informasi Awal Dataset 
+**Informasi Dataset**
 | No | Kolom                                         | Non-Null | Tipe Data | Catatan                   |
 | -- | --------------------------------------------- | -------- | --------- | ------------------------- |
 | 0  | Provinsi                                      | 514      | object    | Nama provinsi             |
@@ -65,14 +61,13 @@ Informasi Awal Dataset
 | 10 | Tingkat Partisipasi Angkatan Kerja            | 514      | object    | Perlu dikonversi ke float |
 | 11 | PDRB Konstan menurut Pengeluaran              | 514      | float64   | Sudah benar               |
 | 12 | Klasifikasi Kemiskinan                        | 514      | float64   | Sudah benar               |
-
 - Jumlah total baris (entri): 999 baris (baris ke-0 sampai ke-998).
 - Jumlah kolom: 13 kolom. 10 kolom bertipe object/string dan 3 kolom bertipe float64.
 - Data Tidak Lengkap: Hanya 514 dari 999 baris yang memiliki data, sisanya mungkin baris kosong atau placeholder. Ini perlu dibersihkan.
 - Banyak Kolom Bertipe object Padahal Seharusnya Numerik: Kolom seperti `Persentase Penduduk Miskin`, `Lama Sekolah`, `IPM`, `dll`. masih berupa string (object) dan mungkin mengandung simbol (%, koma, atau spasi). perlu diKonversi Data Teks ke Numerik.
 - Dataset ini belum siap untuk dianalisis secara langsung karena banyak kolom numerik masih tersimpan sebagai teks/string, dan sekitar 48,5% baris memiliki nilai kosong.
 
-Data Cleaning
+**Data Cleaning**
 | No. | Kolom                   | Non-Null Count | Tipe Data |
 |-----|-------------------------|----------------|-----------|
 | 1   | `provinsi`              | 514            | object    |
@@ -88,7 +83,6 @@ Data Cleaning
 | 11  | `partisipasi_kerja`     | 514            | float64   |
 | 12  | `pdrb`                  | 514            | float64   |
 | 13  | `klasifikasi_kemiskinan`| 514            | float64   |
-
 - Semua kolom telah diubah ke format snake_case yang lebih pendek dan konsisten, mempermudah pemanggilan dan analisis.
 - Kolom yang seharusnya numerik tapi bertipe object (karena simbol koma ,, persen %, atau spasi) dibersihkan:
   - Mengganti `,` menjadi `.` sebagai desimal (sesuai format numerik Python)
@@ -98,7 +92,7 @@ Data Cleaning
 - Terdapat 484 baris duplikat berasal dari 485 baris kosong, hanya satu baris kosong yang unik, sisanya duplikat dari baris kosong tersebut.
 - Pembersihan Dilakukan dengan `dropna()` menghapus 485 baris kosong dan tersisa 514 baris lengkap dan bersih
 
-Data Statistik
+**Statistik Deskriptif**
 | Statistik        | persen\_miskin | lama\_sekolah | pengeluaran\_kapita | ipm     | umur\_harapan | akses\_sanitasi | akses\_air | pengangguran | partisipasi\_kerja | pdrb         | klasifikasi\_kemiskinan |
 | ---------------- | -------------- | ------------- | ------------------- | ------- | ------------- | --------------- | ---------- | ------------ | ------------------ | ------------ | ----------------------- |
 | **count**        | 514.000        | 514.000       | 514.000             | 514.000 | 514.000       | 514.000         | 514.000    | 514.000      | 514.000            | 514.000      | 514.000                 |
@@ -109,7 +103,6 @@ Data Statistik
 | **50% (Median)** | 10.455         | 8.305         | 10196.500           | 69.610  | 69.975        | 81.800          | 89.795     | 4.565        | 68.955             | 8814926.00   | 0.000                   |
 | **75% (Q3)**     | 14.888         | 9.338         | 11719.000           | 73.113  | 72.043        | 89.883          | 96.400     | 6.530        | 72.343             | 19735100.00  | 0.000                   |
 | **max**          | 41.660         | 12.830        | 23888.000           | 87.180  | 77.730        | 99.970          | 100.000    | 13.370       | 97.930             | 460081000.00 | 1.000                   |
-
 - Hampir semua indikator menunjukkan ketimpangan yang cukup ekstrem antar daerah — terutama pada: Kemiskinan (maks 41.66% vs min 2.38%), IPM (maks 87.18 vs min 32.84), PDRB (sangat besar rentangnya)
 - Daerah dengan IPM rendah cenderung juga memiliki lama sekolah rendah, pengeluaran rendah, dan akses sanitasi buruk.
 - PDRB tinggi biasanya berasosiasi dengan akses air/sanitasi yang baik, lama sekolah tinggi, dan IPM tinggi.
@@ -117,7 +110,7 @@ Data Statistik
 - Nilai 0 pada kolom `akses_sanitasi`, `akses_air`, `pengangguran` tersebut dianggap outlier atau kesalahan pengisian data, karena secara logika sangat tidak mungkin suatu wilayah memiliki akses air, sanitasi, atau pengangguran 0% secara absolut.
 - Kolom klasifikasi_kemiskinan sangat tidak seimbang, dengan mayoritas bernilai 0. 
 
-Pembersihan dan imputasi data
+**Pembersihan dan Imputasi Data**
 | Statistik | Akses Sanitasi (%) | Akses Air (%) | Pengangguran (%) |
 | --------: | -----------------: | ------------: | ---------------: |
 |     Count |                514 |           514 |              514 |
@@ -131,8 +124,8 @@ Pembersihan dan imputasi data
 
 - Pada tahap ini, dilakukan pembersihan dan imputasi data terhadap atribut `akses_sanitasi`, `akses_air`, dan `pengangguran`. Ditemukan nilai 0 yang secara logika tidak mungkin terjadi dan dianggap sebagai missing value. Nilai 0 digantikan dengan NaN, lalu di-imputasi menggunakan nilai median, agar tidak terlalu terpengaruh oleh outlier.
 
+**Mendeteksi Outliner**
 ![Bloxplot](https://github.com/user-attachments/assets/ae677a9c-3342-40a9-a4a3-0a5c07a38e7f)
-
 - `persen_miskin` Terlihat banyak outlier di atas (daerah dengan persentase kemiskinan sangat tinggi). Median kemiskinan sekitar 10–12%.
 - `lama_sekolah` Terdapat beberapa outlier di bawah (daerah dengan rata-rata lama sekolah < 4 tahun). Median sekitar 8–9 tahun.
 - `pengeluaran_kapita` Distribusi cukup miring ke kanan (right-skewed) dengan banyak outlier di atas. Artinya, sebagian besar daerah berpengeluaran rendah, dan hanya sedikit daerah dengan pengeluaran tinggi.
@@ -145,21 +138,54 @@ Pembersihan dan imputasi data
 - `klasifikasi_kemiskinan` Mayoritas daerah masuk kategori `0` (tidak miskin), hanya sedikit yang termasuk `1` (miskin)`. Ini menunjukkan imbalance class (perlu penanganan khusus saat modeling, seperti oversampling SMOTE.
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
-
-1. Distribusi Kelas Klasifikasi Kemiskinan
-![Distribusi Kelas](attachment:18ff883f-16aa-486d-b9ad-6280d7992723.png)
+**Distribusi Kelas Klasifikasi Kemiskinan**
+![Distribusi Kelas](https://github.com/user-attachments/assets/8514cbc0-53f8-4ec1-a5de-6b0dc223d4dc)
 * `Tidak Miskin`: sekitar 450+ sampel
 * `Miskin`: sekitar 60-70 sampel
 * Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.
-    
-2. Distribusi Provinsi dan Kota
-![Distribusi Provinsi dan Kota](attachment:7b70dc6a-7e8a-43be-934a-681ad5c36d76.png)
+
+**Distribusi Provinsi dan Kota**
+![Distribusi Provinsi dan Kota](https://github.com/user-attachments/assets/bdca64eb-9928-4e75-a47c-340877e4379d)
 * Distribusi Provinsi:
   - Provinsi dengan jumlah sampel tertinggi: **Jawa Timur, Jawa Tengah, Sumatera Utara, Papua**
   - Provinsi dengan jumlah sampel terendah: **Kalimanatan Utara, D.I. Yogyakarta, Sulawesi Barat**
   - Distribusi provinsi tidak merata: Provinsi di Jawa dan Sumatera mendominasi data. Hal ini berpotensi menyebabkan model overfitting terhadap pola dari daerah-daerah tersebut.
 * Distribusi Kota:
   - Setiap kota hanya memiliki 1 sampel, ditunjukkan oleh bar setinggi 1.0 dan sangat rapat.
+
+
+**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
+![Rata-rata kemiskinan per provinsi dan kota](https://github.com/user-attachments/assets/d524afe0-47f8-4757-90b0-c2617080f587)
+Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1) untuk tiap provinsi. Nilai ini setara dengan proporsi rumah tangga yang diklasifikasikan miskin dalam provinsi tersebut.
+**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
+- Provinsi seperti **Papua, Papua Barat, NTT, Maluku** memiliki proporsi tertinggi dalam klasifikasi `miskin` oleh model atau label data, mencerminkan kemungkinan tingkat kesejahteraan rendah atau keterbatasan infrastruktur/layanan.
+- Terdapat banyak provinsi dengan rata-rata 0, artinya tidak ada satupun data yang diklasifikasikan `miskin` dari provinsi tersebut. Contoh: **DKI Jakarta, Jawa Barat, Jawa Tengah, Kalimantan Timur, Kalimantan Tengah, Bengkulu, Banten, dll**.
+* Dikarenakan ketimpangan distribusi data, di mana sebagian besar "kasus kemiskinan" hanya muncul dari provinsi tertentu.
+**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
+* Terdapat *514 kota unik, dan sebagian besar hanya memiliki 1 sampel. Rata-rata kemiskinan per kota adalah 0 atau 1 → **diskrit dan tidak informatif secara statistik** karena terlalu sedikit datanya per kota.
+Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkinan hanya 1 rumah tangga, dan diklasifikasikan miskin. Banyak kota besar seperti `Kota Bandung`, `Balikpapan`, `Bitung`, dll memiliki nilai 0.0.
+
+
+Berikut penjelasan dan insight berdasarkan **heatmap korelasi** dan **pairplot** yang Anda tampilkan:
+
+---
+
+**Heatmap Korelasi (Correlation Matrix)**
+**Korelasi terhadap `klasifikasi_kemiskinan`:**
+  * **`persen_miskin`**: **positif kuat (0.76)** Wilayah dengan persentase penduduk miskin tinggi, cenderung masuk klasifikasi miskin.
+  * Fitur lain memiliki **korelasi negatif** dengan klasifikasi kemiskinan:
+    * `ipm` (Indeks Pembangunan Manusia): -0.54
+    * `pengeluaran_kapita`: -0.46
+    * `akses_sanitasi`: -0.44
+    * `umur_harapan`: -0.45
+    * Artinya: Semakin tinggi kualitas hidup (IPM, pengeluaran, harapan hidup, sanitasi), semakin kecil kemungkinan wilayah diklasifikasikan sebagai miskin.
+**Korelasi antar fitur:**
+  * Korelasi **sangat tinggi** antara:
+   * `ipm`, `pengeluaran_kapita`, `lama_sekolah`: \~0.87 Bisa jadi ada multikolinearitas. 
+   * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.
+**Pairplot (Scatter Matrix)**
+* Hubungan linier terlihat jelas antara: `pengeluaran_kapita`, `ipm`, `lama_sekolah` Korelasi kuat & searah.
+* `klasifikasi_kemiskinan` tampak sebagai bilangan diskrit (0 atau 1) di sumbu Y: Terdapat pemisahan cukup jelas pada `persen_miskin`, `ipm`, `pengeluaran_kapita`, artinya fitur-fitur ini informatif untuk membedakan status kemiskinan.
 
 
 ## Data Preparation

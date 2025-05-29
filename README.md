@@ -168,7 +168,7 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
 **Multivariate Analysis**
 **Heatmap Korelasi (Correlation Matrix)**
 ![Correlation Matrix](https://github.com/user-attachments/assets/17071e2c-06dc-4c0d-862b-37247845646b)
-**Korelasi terhadap `klasifikasi_kemiskinan`:**
+<br/>**Korelasi terhadap `klasifikasi_kemiskinan`:**
   * **`persen_miskin`**: **positif kuat (0.76)** Wilayah dengan persentase penduduk miskin tinggi, cenderung masuk klasifikasi miskin.
   * Fitur lain memiliki **korelasi negatif** dengan klasifikasi kemiskinan:
     * `ipm` (Indeks Pembangunan Manusia): -0.54
@@ -176,7 +176,7 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
     * `akses_sanitasi`: -0.44
     * `umur_harapan`: -0.45
     * Artinya: Semakin tinggi kualitas hidup (IPM, pengeluaran, harapan hidup, sanitasi), semakin kecil kemungkinan wilayah diklasifikasikan sebagai miskin.
-**Korelasi antar fitur:**
+<br/>**Korelasi antar fitur:**
   * Korelasi **sangat tinggi** antara:
    * `ipm`, `pengeluaran_kapita`, `lama_sekolah`: \~0.87 Bisa jadi ada multikolinearitas. 
    * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.<br/>
@@ -188,7 +188,7 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
 
 ## Data Preparation
 1. **Encoding Variabel Kategorikal**
-* **Langkah**: Melakukan One-Hot Encoding terhadap kolom `provinsi` dan `kota`.
+* Melakukan One-Hot Encoding terhadap kolom `provinsi` dan `kota`.
 * **Kode**:
   ```python
   encoder = OneHotEncoder(sparse_output=False, drop='first')

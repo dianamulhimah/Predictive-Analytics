@@ -342,8 +342,7 @@ $$
 * ![SVM](https://github.com/user-attachments/assets/0a938270-c655-4beb-8dc9-ded5a31e372f)
 * ![KNN](https://github.com/user-attachments/assets/9cbb3dd4-08cf-4954-aa44-a6d47cfbbfb6)
 * ![NB](https://github.com/user-attachments/assets/2cf6a1f4-9d16-4411-9f22-fa8a59eec0c0)
-Confusion matrix membantu melihat detail kesalahan prediksi:
-* Model seperti DT dan RF hampir tidak melakukan kesalahan pada kelas mayoritas (0.0) dan masih cukup baik dalam memprediksi kelas minoritas (1.0) berkat SMOTE.
+* Confusion matrix membantu melihat detail kesalahan prediksi: Model seperti DT dan RF hampir tidak melakukan kesalahan pada kelas mayoritas (0.0) dan masih cukup baik dalam memprediksi kelas minoritas (1.0) berkat SMOTE.
 
 4. **Perbandingan Akurasi Train vs Test**
 ![Perbandingan Akurasi Train vs Test](https://github.com/user-attachments/assets/e39dbdad-252f-45e1-a8c3-df23caf39292)

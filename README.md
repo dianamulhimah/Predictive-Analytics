@@ -187,12 +187,58 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
 
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+1. **Encoding Variabel Kategorikal**
+* **Langkah**: Melakukan One-Hot Encoding terhadap kolom `provinsi` dan `kota`.
+* **Kode**:
+  ```python
+  encoder = OneHotEncoder(sparse_output=False, drop='first')
+  encoded_categorical = encoder.fit_transform(df_cleaned[['provinsi', 'kota']])
+  df_encoded = pd.DataFrame(encoded_categorical, columns=encoder.get_feature_names_out(['provinsi', 'kota']), index=df_cleaned.index)
+  df_final = pd.concat([df_cleaned.drop(columns=['provinsi', 'kota']), df_encoded], axis=1)
+  ```
+* **Alasan**: Model machine learning tidak dapat memproses data kategorikal dalam bentuk teks secara langsung. One-Hot Encoding mengubah variabel kategorikal menjadi representasi numerik biner tanpa menimbulkan hubungan ordinal palsu antar kategori.
 
-Rubrik/Kriteria Tambahan (Opsional):
+2. **Pemisahan Fitur dan Label**
+* **Kode**:
+  ```python
+  X = df_final.drop(columns=['klasifikasi_kemiskinan'])
+  y = df_final['klasifikasi_kemiskinan']
+  ```
+* **Alasan**: Memisahkan fitur (variabel independen) dan label (variabel dependen) diperlukan agar model hanya belajar dari fitur untuk memprediksi label.
 
-Menjelaskan proses data preparation yang dilakukan
-Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+3. **Normalisasi (Min-Max Scaling)**
+* **Kode**:
+  ```python
+  scaler = MinMaxScaler()
+  X_scaled = scaler.fit_transform(X)
+  X_scaled_df = pd.DataFrame(X_scaled, columns=X.columns, index=X.index)
+  ```
+* **Alasan**: Beberapa algoritma machine learning (seperti KNN, SVM, PCA) sensitif terhadap skala data. Normalisasi Min-Max digunakan untuk membawa semua nilai fitur ke rentang \[0, 1], mencegah fitur yang memiliki skala besar mendominasi model.
+
+4. **Dimensionality Reduction (PCA)**
+* **Kode**:
+  ```python
+  pca = PCA(n_components=10, random_state=123)
+  X_pca = pca.fit_transform(X_scaled_df)
+  ```
+* **Alasan**: PCA digunakan untuk mengurangi dimensi data tanpa kehilangan terlalu banyak informasi. Dengan banyaknya fitur (557 kolom setelah encoding), PCA membantu menghindari overfitting dan mempercepat proses pelatihan.
+
+5. **Split Data: Training dan Testing**
+* **Kode**:
+  ```python
+  X_train, X_test, y_train, y_test = train_test_split(X_pca, y, test_size=0.2, random_state=42, stratify=y)
+  ```
+* **Alasan**: Pemisahan data menjadi data latih dan data uji bertujuan untuk mengukur performa model secara adil pada data yang belum pernah dilihat sebelumnya. Penggunaan `stratify=y` memastikan distribusi kelas tetap proporsional.
+
+6. **Penyeimbangan Data Menggunakan SMOTE**
+* **Langkah**:
+  ```python
+  from imblearn.over_sampling import SMOTE
+  smote = SMOTE(random_state=42)
+  X_train_smote, y_train_smote = smote.fit_resample(X_train, y_train)
+  ```
+* **Kode**: Dataset menunjukkan ketidakseimbangan label `klasifikasi_kemiskinan`, di mana kelas minoritas (1.0) jauh lebih sedikit daripada mayoritas (0.0). SMOTE (Synthetic Minority Oversampling Technique) digunakan untuk menyeimbangkan kelas dengan mensintesis data baru untuk kelas minoritas sehingga model tidak bias terhadap kelas mayoritas.
+
 
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.

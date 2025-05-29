@@ -317,6 +317,7 @@ Dalam proyek ini, digunakan empat metrik utama untuk mengevaluasi performa model
   \text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}
   $$
 
+
 2. **Hasil Evaluasi**
 | Model                        | Akurasi | Precision | Recall | F1-Score   |
 | ---------------------------- | ------- | --------- | ------ | ---------- |
@@ -325,6 +326,7 @@ Dalam proyek ini, digunakan empat metrik utama untuk mengevaluasi performa model
 | Support Vector Machine (SVM) | 0.9417  | 0.9534    | 0.9417 | 0.9453     |
 | K-Nearest Neighbors (KNN)    | 0.9320  | 0.9486    | 0.9320 | 0.9369     |
 | Naive Bayes (NB)             | 0.8835  | 0.9308    | 0.8835 | 0.8972     |
+
 * **Decision Tree (DT)** dan **Random Forest (RF)** adalah model dengan performa terbaik, menunjukkan akurasi dan F1-score tertinggi (>96%).
 * **Support Vector Machine (SVM)** menyusul dengan performa sangat baik, F1-score mencapai >94%.
 * **KNN** juga menunjukkan performa yang kuat, tetapi sedikit lebih rendah dibanding DT, RF, dan SVM.
@@ -347,10 +349,11 @@ Confusion matrix membantu melihat detail kesalahan prediksi:
 * **SVM dan KNN** memiliki gap akurasi yang lebih kecil → model lebih general dan stabil.
 * **Naive Bayes** memiliki train dan test akurasi yang lebih rendah, namun konsisten.
 
-**Kesimpulan**
+**KESIMPULAN**
 * Model **Decision Tree dan Random Forest** menunjukkan performa terbaik secara keseluruhan.
 * **SMOTE** terbukti meningkatkan **recall dan F1-score** untuk kelas minoritas (yang penting dalam kasus klasifikasi tidak seimbang seperti ini).
 * Evaluasi tidak hanya dilihat dari akurasi, tapi juga perlu mempertimbangkan **F1-score**, terutama dalam masalah ketimpangan kelas seperti klasifikasi tingkat kemiskinan.
+
 
 ## Referensi
 [^1]: Badan Pusat Statistik Indonesia, “Profil Kemiskinan di Indonesia Maret 2023,” Badan Pusat statistik, no. 57, 2023.

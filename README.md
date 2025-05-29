@@ -362,5 +362,3 @@ $$
 [^3]:	R. F. Saragih, P. R. Silalahi, and K. Tambunan, “Pengaruh Indeks Pembangunan Manusia, Tingkat Pengangguran Terbuka Terhadap Tingkat Kemiskinan di Indonesia Tahun 2007 – 2021,” PESHUM : Jurnal Pendidikan, Sosial dan Humaniora, vol. 1, no. 2, 2022, doi: 10.56799/peshum.v1i2.36.
 [^4]:	L. Qadrini, A. Sepperwali, and A. Aina, “Decision Tree Dan Adaboost Pada Klasifikasi Penerima Program Bantuan Sosial,” Jurnal Inovasi Penelitian, vol. 2, no. 7, 2021.
 [^5]:	A. Anna, “PENGUJIAN TEKNIK ALGORITMA KLASIFIKASI TERHADAP TINGKAT KEMISKINAN PENDUDUK,” JTIK (Jurnal Teknik Informatika Kaputama), vol. 7, no. 1, 2023, doi: 10.59697/jtik.v7i1.35.
- 
-

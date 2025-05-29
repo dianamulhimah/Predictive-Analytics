@@ -241,27 +241,116 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
 
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Tahapan pemodelan bertujuan untuk membangun model klasifikasi yang mampu memprediksi tingkat kemiskinan di Indonesia. Proses dilakukan dengan menggunakan 5 algoritma (KNN, DT, RF, SVM, NB) machine learning dengan parameter default dari pustaka scikit-learn. Untuk menangani masalah ketidakseimbangan kelas pada data, digunakan teknik SMOTE (Synthetic Minority Over-sampling Technique) sebelum proses pelatihan model.
+| Model                  | Parameter Utama                           | Penjelasan                                                               |
+| ---------------------- | ----------------------------------------- | ------------------------------------------------------------------------ |
+| **KNN**                | `n_neighbors=5`                           | Jumlah tetangga terdekat untuk voting dalam klasifikasi.                 |
+| **Decision Tree (DT)** | `criterion='gini'`, `max_depth=None`      | Menggunakan indeks Gini untuk split, tanpa batasan kedalaman pohon.      |
+| **Random Forest (RF)** | `n_estimators=100`, `max_features='sqrt'` | Jumlah pohon = 100, jumlah fitur yang dipilih acak pada tiap split = √n. |
+| **SVM**                | `kernel='rbf'`, `C=1.0`, `gamma='scale'`  | Menggunakan kernel radial basis function untuk pemisahan non-linear.     |
+| **Naive Bayes (NB)**   | -                                         | Menggunakan distribusi Gaussian standar tanpa parameter tambahan.        |
 
-Rubrik/Kriteria Tambahan (Opsional):
-
-Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. Jelaskan proses improvement yang dilakukan.
-Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. Jelaskan mengapa memilih model tersebut sebagai model terbaik.
+1. **K-Nearest Neighbors (KNN)**
+* **Kelebihan**:
+  * Mudah diimplementasikan dan dipahami.
+  * Tidak memerlukan proses pelatihan yang kompleks.
+* **Kekurangan**:
+  * Sensitif terhadap fitur yang tidak ternormalisasi.
+  * Kurang efisien untuk dataset besar karena perlu menghitung jarak untuk semua titik data.
+2. **Decision Tree (DT)**
+* **Kelebihan**:
+  * Mudah diinterpretasikan.
+  * Mampu menangani fitur numerik maupun kategorikal.
+* **Kekurangan**:
+  * Cenderung overfitting jika tidak dilakukan pruning atau pengaturan kedalaman pohon.
+3. **Random Forest (RF)**
+* **Kelebihan**:
+  * Lebih stabil dan akurat dibanding decision tree tunggal.
+  * Mengurangi overfitting melalui kombinasi banyak pohon keputusan.
+* **Kekurangan**:
+  * Kurang dapat diinterpretasi secara langsung.
+  * Waktu pelatihan relatif lebih lama.
+4. **Support Vector Machine (SVM)**
+* **Kelebihan**:
+  * Sangat efektif untuk dataset berdimensi tinggi.
+  * Mampu membentuk decision boundary non-linear dengan kernel trick.
+* **Kekurangan**:
+  * Tidak cocok untuk dataset besar karena kompleksitas komputasi tinggi.
+  * Sulit diinterpretasi.
+5. **Naive Bayes (NB)**
+* **Kelebihan**:
+  * Cepat dan efisien untuk dataset besar.
+  * Performa cukup baik meskipun asumsi independensi tidak sepenuhnya terpenuhi.
+* **Kekurangan**:
+  * Asumsi fitur bersifat independen jarang terjadi dalam praktik.
+  * Kurang akurat dibanding model kompleks lainnya.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+1. **Metrik Evaluasi yang Digunakan**
+Dalam proyek ini, digunakan empat metrik utama untuk mengevaluasi performa model klasifikasi:
+* **Accuracy (Akurasi)**
+  Mengukur seberapa banyak prediksi yang benar dibandingkan total keseluruhan data.
+  Formula:
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik akurasi, precision, recall, dan F1 score. Jelaskan mengenai beberapa hal berikut:
+  $$
+  \text{Accuracy} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
+  $$
+* **Precision**
+  Mengukur ketepatan prediksi positif — dari semua yang diprediksi sebagai positif, berapa banyak yang benar-benar positif.
+  Formula (untuk kelas positif):
 
-Penjelasan mengenai metrik yang digunakan
-Menjelaskan hasil proyek berdasarkan metrik evaluasi
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+  $$
+  \text{Precision} = \frac{\text{TP}}{\text{TP + FP}}
+  $$
+* **Recall (Sensitivity)**
+  Mengukur seberapa banyak data positif yang berhasil dikenali.
+  Formula:
 
-Rubrik/Kriteria Tambahan (Opsional):
+  $$
+  \text{Recall} = \frac{\text{TP}}{\text{TP + FN}}
+  $$
+* **F1-Score**
+  Merupakan harmonic mean dari Precision dan Recall. Digunakan saat diperlukan keseimbangan antara keduanya.
+  Formula:
 
-Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+  $$
+  \text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}
+  $$
 
+2. **Hasil Evaluasi**
+| Model                        | Akurasi | Precision | Recall | F1-Score   |
+| ---------------------------- | ------- | --------- | ------ | ---------- |
+| Decision Tree (DT)           | 0.9612  | 0.9709    | 0.9612 | **0.9635** |
+| Random Forest (RF)           | 0.9612  | 0.9651    | 0.9612 | 0.9624     |
+| Support Vector Machine (SVM) | 0.9417  | 0.9534    | 0.9417 | 0.9453     |
+| K-Nearest Neighbors (KNN)    | 0.9320  | 0.9486    | 0.9320 | 0.9369     |
+| Naive Bayes (NB)             | 0.8835  | 0.9308    | 0.8835 | 0.8972     |
+* **Decision Tree (DT)** dan **Random Forest (RF)** adalah model dengan performa terbaik, menunjukkan akurasi dan F1-score tertinggi (>96%).
+* **Support Vector Machine (SVM)** menyusul dengan performa sangat baik, F1-score mencapai >94%.
+* **KNN** juga menunjukkan performa yang kuat, tetapi sedikit lebih rendah dibanding DT, RF, dan SVM.
+* **Naive Bayes** memiliki performa terendah dibanding model lain, dengan akurasi dan F1-score di bawah 90%, tetapi tetap layak jika mempertimbangkan efisiensi komputasi.
+  
+3. **Analisis Hasil dari Confusion Matrix**
+* ![RF](https://github.com/user-attachments/assets/8c1d4fc1-b006-4686-9cb7-4c1ecd9c07c2)
+* ![DT](https://github.com/user-attachments/assets/3b694991-fcb7-48c5-a6d6-2a7c745522b1)
+* ![SVM](https://github.com/user-attachments/assets/0a938270-c655-4beb-8dc9-ded5a31e372f)
+* ![KNN](https://github.com/user-attachments/assets/9cbb3dd4-08cf-4954-aa44-a6d47cfbbfb6)
+* ![NB](https://github.com/user-attachments/assets/2cf6a1f4-9d16-4411-9f22-fa8a59eec0c0)
+Confusion matrix membantu melihat detail kesalahan prediksi:
+* Model seperti DT dan RF hampir tidak melakukan kesalahan pada kelas mayoritas (0.0) dan masih cukup baik dalam memprediksi kelas minoritas (1.0) berkat SMOTE.
+* Sebelum SMOTE, banyak model cenderung bias terhadap kelas mayoritas. Namun, setelah SMOTE, **recall untuk kelas minoritas meningkat drastis**, menunjukkan SMOTE berhasil menyeimbangkan distribusi kelas.
+
+4. **Perbandingan Akurasi Train vs Test**
+![Perbandingan Akurasi Train vs Test](https://github.com/user-attachments/assets/e39dbdad-252f-45e1-a8c3-df23caf39292)
+* **Overfitting dapat terdeteksi dari gap besar antara akurasi Train dan Test.**
+* DT dan RF memiliki **akurasi train = 100%**, tetapi test tetap tinggi (\~96%) → sedikit overfitting, namun masih generalizable.
+* **SVM dan KNN** memiliki gap akurasi yang lebih kecil → model lebih general dan stabil.
+* **Naive Bayes** memiliki train dan test akurasi yang lebih rendah, namun konsisten.
+
+**Kesimpulan**
+* Model **Decision Tree dan Random Forest** menunjukkan performa terbaik secara keseluruhan.
+* **SMOTE** terbukti meningkatkan **recall dan F1-score** untuk kelas minoritas (yang penting dalam kasus klasifikasi tidak seimbang seperti ini).
+* Evaluasi tidak hanya dilihat dari akurasi, tapi juga perlu mempertimbangkan **F1-score**, terutama dalam masalah ketimpangan kelas seperti klasifikasi tingkat kemiskinan.
 
 ## Referensi
 [^1]: Badan Pusat Statistik Indonesia, “Profil Kemiskinan di Indonesia Maret 2023,” Badan Pusat statistik, no. 57, 2023.

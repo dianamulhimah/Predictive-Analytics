@@ -322,6 +322,7 @@ $$
 
 
 2. **Hasil Evaluasi**
+
 | Model                     | Akurasi | Precision | Recall | F1-Score |
 |--------------------------|---------|-----------|--------|----------|
 | Decision Tree (DT)       | 0.9612  | 0.9709    | 0.9612 | 0.9635   |
@@ -343,7 +344,6 @@ $$
 * ![NB](https://github.com/user-attachments/assets/2cf6a1f4-9d16-4411-9f22-fa8a59eec0c0)
 Confusion matrix membantu melihat detail kesalahan prediksi:
 * Model seperti DT dan RF hampir tidak melakukan kesalahan pada kelas mayoritas (0.0) dan masih cukup baik dalam memprediksi kelas minoritas (1.0) berkat SMOTE.
-* Sebelum SMOTE, banyak model cenderung bias terhadap kelas mayoritas. Namun, setelah SMOTE, **recall untuk kelas minoritas meningkat drastis**, menunjukkan SMOTE berhasil menyeimbangkan distribusi kelas.
 
 4. **Perbandingan Akurasi Train vs Test**
 ![Perbandingan Akurasi Train vs Test](https://github.com/user-attachments/assets/e39dbdad-252f-45e1-a8c3-df23caf39292)
@@ -356,57 +356,6 @@ Confusion matrix membantu melihat detail kesalahan prediksi:
 * Model **Decision Tree dan Random Forest** menunjukkan performa terbaik secara keseluruhan.
 * **SMOTE** terbukti meningkatkan **recall dan F1-score** untuk kelas minoritas (yang penting dalam kasus klasifikasi tidak seimbang seperti ini).
 * Evaluasi tidak hanya dilihat dari akurasi, tapi juga perlu mempertimbangkan **F1-score**, terutama dalam masalah ketimpangan kelas seperti klasifikasi tingkat kemiskinan.
-
-
-
-# Evaluasi Model Klasifikasi
-
-## Metrik Evaluasi
-
-### Precision
-Mengukur ketepatan prediksi positif — dari semua yang diprediksi sebagai positif, berapa banyak yang benar-benar positif.
-
-**Formula:**
-
-$$
-\text{Precision} = \frac{\text{TP}}{\text{TP + FP}}
-$$
-
----
-
-### Recall (Sensitivity)
-Mengukur seberapa banyak data positif yang berhasil dikenali.
-
-**Formula:**
-
-$$
-\text{Recall} = \frac{\text{TP}}{\text{TP + FN}}
-$$
-
----
-
-### F1-Score
-Merupakan harmonic mean dari Precision dan Recall. Digunakan saat diperlukan keseimbangan antara keduanya.
-
-**Formula:**
-
-$$
-\text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}
-$$
-
----
-
-## Hasil Evaluasi Model
-
-| Model                     | Akurasi | Precision | Recall | F1-Score |
-|--------------------------|---------|-----------|--------|----------|
-| Decision Tree (DT)       | 0.9612  | 0.9709    | 0.9612 | 0.9635   |
-| Random Forest (RF)       | 0.9612  | 0.9651    | 0.9612 | 0.9624   |
-| Support Vector Machine (SVM) | 0.9417  | 0.9534    | 0.9417 | 0.9453   |
-| K-Nearest Neighbors (KNN) | 0.9320  | 0.9486    | 0.9320 | 0.9369   |
-| Naive Bayes (NB)         | 0.8835  | 0.9308    | 0.8835 | 0.8972   |
-
-
 
 ## Referensi
 [^1]: Badan Pusat Statistik Indonesia, “Profil Kemiskinan di Indonesia Maret 2023,” Badan Pusat statistik, no. 57, 2023.

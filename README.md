@@ -318,6 +318,40 @@ Dalam proyek ini, digunakan empat metrik utama untuk mengevaluasi performa model
   $$
 
 
+
+
+  ### Precision
+Mengukur ketepatan prediksi positif — dari semua yang diprediksi sebagai positif, berapa banyak yang benar-benar positif.
+
+**Formula:**
+
+$$
+\text{Precision} = \frac{\text{TP}}{\text{TP + FP}}
+$$
+
+---
+
+### Recall (Sensitivity)
+Mengukur seberapa banyak data positif yang berhasil dikenali.
+
+**Formula:**
+
+$$
+\text{Recall} = \frac{\text{TP}}{\text{TP + FN}}
+$$
+
+---
+
+### F1-Score
+Merupakan harmonic mean dari Precision dan Recall. Digunakan saat diperlukan keseimbangan antara keduanya.
+
+**Formula:**
+
+$$
+\text{F1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision + Recall}}
+$$
+
+
 2. **Hasil Evaluasi**
 | Model                        | Akurasi | Precision | Recall | F1-Score   |
 | ---------------------------- | ------- | --------- | ------ | ---------- |
@@ -326,6 +360,16 @@ Dalam proyek ini, digunakan empat metrik utama untuk mengevaluasi performa model
 | Support Vector Machine (SVM) | 0.9417  | 0.9534    | 0.9417 | 0.9453     |
 | K-Nearest Neighbors (KNN)    | 0.9320  | 0.9486    | 0.9320 | 0.9369     |
 | Naive Bayes (NB)             | 0.8835  | 0.9308    | 0.8835 | 0.8972     |
+
+
+
+| Model                     | Akurasi | Precision | Recall | F1-Score |
+|--------------------------|---------|-----------|--------|----------|
+| Decision Tree (DT)       | 0.9612  | 0.9709    | 0.9612 | 0.9635   |
+| Random Forest (RF)       | 0.9612  | 0.9651    | 0.9612 | 0.9624   |
+| Support Vector Machine (SVM) | 0.9417  | 0.9534    | 0.9417 | 0.9453   |
+| K-Nearest Neighbors (KNN) | 0.9320  | 0.9486    | 0.9320 | 0.9369   |
+| Naive Bayes (NB)         | 0.8835  | 0.9308    | 0.8835 | 0.8972   |
 
 * **Decision Tree (DT)** dan **Random Forest (RF)** adalah model dengan performa terbaik, menunjukkan akurasi dan F1-score tertinggi (>96%).
 * **Support Vector Machine (SVM)** menyusul dengan performa sangat baik, F1-score mencapai >94%.

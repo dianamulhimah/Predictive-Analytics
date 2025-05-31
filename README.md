@@ -155,14 +155,14 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
   - Setiap kota hanya memiliki 1 sampel, ditunjukkan oleh bar setinggi 1.0 dan sangat rapat.
 
 **Univariate Analysis**
-**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
+<br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
 <br/>![Rata-rata kemiskinan per provinsi](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/provinsi.png?raw=true)
 Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1) untuk tiap provinsi. Nilai ini setara dengan proporsi rumah tangga yang diklasifikasikan miskin dalam provinsi tersebut.
 - Provinsi seperti **Papua, Papua Barat, NTT, Maluku** memiliki proporsi tertinggi dalam klasifikasi `miskin` oleh model atau label data, mencerminkan kemungkinan tingkat kesejahteraan rendah atau keterbatasan infrastruktur/layanan.
 - Terdapat banyak provinsi dengan rata-rata 0, artinya tidak ada satupun data yang diklasifikasikan `miskin` dari provinsi tersebut. Contoh: **DKI Jakarta, Jawa Barat, Jawa Tengah, Kalimantan Timur, Kalimantan Tengah, Bengkulu, Banten, dll**.
 * Dikarenakan ketimpangan distribusi data, di mana sebagian besar "kasus kemiskinan" hanya muncul dari provinsi tertentu.
 
-**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
+<br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
 <br/>![Rata-rata kemiskinan per kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/kota.png?raw=true)
 * Terdapat 514 kota unik, dan sebagian besar hanya memiliki 1 sampel. Rata-rata kemiskinan per kota adalah 0 atau 1 → **diskrit dan tidak informatif secara statistik** karena terlalu sedikit datanya per kota.
 Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkinan hanya 1 rumah tangga, dan diklasifikasikan miskin. Banyak kota besar seperti `Kota Bandung`, `Balikpapan`, `Bitung`, dll memiliki nilai 0.0.
@@ -182,8 +182,9 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
   * Korelasi **sangat tinggi** antara:
    * `ipm`, `pengeluaran_kapita`, `lama_sekolah`: \~0.87 Bisa jadi ada multikolinearitas. 
    * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.
+
 <br/>**Pairplot (Scatter Matrix)**
-![Scatter Matrix](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/scatter_matrix.png?raw=true)
+<br/>![Scatter Matrix](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/scatter_matrix.png?raw=true)
 * Hubungan linier terlihat jelas antara: `pengeluaran_kapita`, `ipm`, `lama_sekolah` Korelasi kuat & searah.
 * `klasifikasi_kemiskinan` tampak sebagai bilangan diskrit (0 atau 1) di sumbu Y: Terdapat pemisahan cukup jelas pada `persen_miskin`, `ipm`, `pengeluaran_kapita`, artinya fitur-fitur ini informatif untuk membedakan status kemiskinan.
 

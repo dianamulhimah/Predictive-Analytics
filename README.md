@@ -152,8 +152,8 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 * Distribusi Kota:
   - Setiap kota hanya memiliki 1 sampel, ditunjukkan oleh bar setinggi 1.0 dan sangat rapat.
 
-<br/>**Univariate Analysis**
-**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
+**Univariate Analysis**
+<br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
 ![Rata-rata kemiskinan per provinsi](https://github.com/user-attachments/assets/9f9a8a45-199f-4309-8f8b-ddf5556905ed)
 Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1) untuk tiap provinsi. Nilai ini setara dengan proporsi rumah tangga yang diklasifikasikan miskin dalam provinsi tersebut.
 - Provinsi seperti **Papua, Papua Barat, NTT, Maluku** memiliki proporsi tertinggi dalam klasifikasi `miskin` oleh model atau label data, mencerminkan kemungkinan tingkat kesejahteraan rendah atau keterbatasan infrastruktur/layanan.
@@ -164,8 +164,8 @@ Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1
 * Terdapat 514 kota unik, dan sebagian besar hanya memiliki 1 sampel. Rata-rata kemiskinan per kota adalah 0 atau 1 → **diskrit dan tidak informatif secara statistik** karena terlalu sedikit datanya per kota.
 Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkinan hanya 1 rumah tangga, dan diklasifikasikan miskin. Banyak kota besar seperti `Kota Bandung`, `Balikpapan`, `Bitung`, dll memiliki nilai 0.0.
 
-<br/>**Multivariate Analysis**
-**Heatmap Korelasi (Correlation Matrix)**
+**Multivariate Analysis**
+<br/>**Heatmap Korelasi (Correlation Matrix)**
 ![Correlation Matrix](https://github.com/user-attachments/assets/f623a85e-96d7-43bd-8ea7-8bbcaaaf580c)
 <br/>**Korelasi terhadap `klasifikasi_kemiskinan`:**
   * **`persen_miskin`**: **positif kuat (0.76)** Wilayah dengan persentase penduduk miskin tinggi, cenderung masuk klasifikasi miskin.

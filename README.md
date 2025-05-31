@@ -125,7 +125,6 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - Pada tahap ini, dilakukan pembersihan dan imputasi data terhadap atribut `akses_sanitasi`, `akses_air`, dan `pengangguran`. Ditemukan nilai 0 yang secara logika tidak mungkin terjadi dan dianggap sebagai missing value. Nilai 0 digantikan dengan NaN, lalu di-imputasi menggunakan nilai median, agar tidak terlalu terpengaruh oleh outlier.
 
 **Mendeteksi Outliner**
-![Bloxplot](https://github.com/user-attachments/assets/edef763d-6444-403f-9d97-12d9628bf06b)
 ![Bloxplot](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/Bloxplot.png?raw=true)
 - `persen_miskin` Terlihat banyak outlier di atas (daerah dengan persentase kemiskinan sangat tinggi). Median kemiskinan sekitar 10–12%.
 - `lama_sekolah` Terdapat beberapa outlier di bawah (daerah dengan rata-rata lama sekolah < 4 tahun). Median sekitar 8–9 tahun.

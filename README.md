@@ -135,7 +135,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - `pengangguran` Memiliki beberapa outlier tinggi, yang menandakan daerah dengan pengangguran ekstrem. Median sekitar 4–5%.
 - `partisipasi_kerja` Hampir simetris, namun ada beberapa outlier tinggi (di atas 85%). Median sekitar 70%.
 - `pdrb` Distribusi sangat skewed ke kanan. Banyak outlier sangat tinggi: daerah kaya seperti DKI Jakarta, Papua, dll.
-- `klasifikasi_kemiskinan` Mayoritas daerah masuk kategori `0` (tidak miskin), hanya sedikit yang termasuk `1` (miskin)`. Ini menunjukkan imbalance class (perlu penanganan khusus saat modeling, seperti oversampling SMOTE.
+- `klasifikasi_kemiskinan` Mayoritas daerah masuk kategori `0` (tidak miskin), hanya sedikit yang termasuk `1` (miskin)`. Ini menunjukkan imbalance class (perlu penanganan khusus saat modeling, seperti oversampling SMOTE).
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
 <br/>**Distribusi Kelas Klasifikasi Kemiskinan**

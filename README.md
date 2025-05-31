@@ -126,6 +126,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 
 **Mendeteksi Outliner**
 ![Bloxplot](https://github.com/user-attachments/assets/ae677a9c-3342-40a9-a4a3-0a5c07a38e7f)
+![image](https://github.com/user-attachments/assets/57f287cd-f4fb-484f-b2a1-25686cc0512d)
 - `persen_miskin` Terlihat banyak outlier di atas (daerah dengan persentase kemiskinan sangat tinggi). Median kemiskinan sekitar 10–12%.
 - `lama_sekolah` Terdapat beberapa outlier di bawah (daerah dengan rata-rata lama sekolah < 4 tahun). Median sekitar 8–9 tahun.
 - `pengeluaran_kapita` Distribusi cukup miring ke kanan (right-skewed) dengan banyak outlier di atas. Artinya, sebagian besar daerah berpengeluaran rendah, dan hanya sedikit daerah dengan pengeluaran tinggi.

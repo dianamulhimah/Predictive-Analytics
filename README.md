@@ -138,12 +138,12 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - `klasifikasi_kemiskinan` Mayoritas daerah masuk kategori `0` (tidak miskin), hanya sedikit yang termasuk `1` (miskin)`. Ini menunjukkan imbalance class (perlu penanganan khusus saat modeling, seperti oversampling SMOTE.
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
-<br/>**Distribusi Kelas Klasifikasi Kemiskinan**
+**Distribusi Kelas Klasifikasi Kemiskinan**
 ![Distribusi Kelas](https://github.com/user-attachments/assets/0560ee1d-e227-4aaf-ad05-19a24a6edca1)
 * `Tidak Miskin`: sekitar 450+ sampel
 * `Miskin`: sekitar 60-70 sampel
 * Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.
-<br/>**Distribusi Provinsi dan Kota**
+**Distribusi Provinsi dan Kota**
 ![Distribusi provinsi dan kota](https://github.com/user-attachments/assets/17337d62-834e-44a8-bb18-b7cebbbfd7b8)
 * Distribusi Provinsi:
   - Provinsi dengan jumlah sampel tertinggi: **Jawa Timur, Jawa Tengah, Sumatera Utara, Papua**

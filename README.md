@@ -125,7 +125,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - Pada tahap ini, dilakukan pembersihan dan imputasi data terhadap atribut `akses_sanitasi`, `akses_air`, dan `pengangguran`. Ditemukan nilai 0 yang secara logika tidak mungkin terjadi dan dianggap sebagai missing value. Nilai 0 digantikan dengan NaN, lalu di-imputasi menggunakan nilai median, agar tidak terlalu terpengaruh oleh outlier.
 
 **Mendeteksi Outliner**
-![Bloxplot](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/Bloxplot.png?raw=true)
+![Bloxplot](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/bloxplot.png?raw=true)
 - `persen_miskin` Terlihat banyak outlier di atas (daerah dengan persentase kemiskinan sangat tinggi). Median kemiskinan sekitar 10–12%.
 - `lama_sekolah` Terdapat beberapa outlier di bawah (daerah dengan rata-rata lama sekolah < 4 tahun). Median sekitar 8–9 tahun.
 - `pengeluaran_kapita` Distribusi cukup miring ke kanan (right-skewed) dengan banyak outlier di atas. Artinya, sebagian besar daerah berpengeluaran rendah, dan hanya sedikit daerah dengan pengeluaran tinggi.
@@ -139,12 +139,12 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
 <br/>**Distribusi Kelas Klasifikasi Kemiskinan**
-![Distribusi Kelas](https://github.com/user-attachments/assets/9f074ed7-a386-42a2-8029-1f61154cf653)
+![Distribusi Kelas](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/distribusi_kelas.png?raw=true)
 * `Tidak Miskin`: sekitar 450+ sampel
 * `Miskin`: sekitar 60-70 sampel
 * Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.
 <br/>**Distribusi Provinsi dan Kota**
-![Distribusi provinsi dan kota](https://github.com/user-attachments/assets/a65adf9c-cefa-4046-a9dd-1f726443ceb2)
+![Distribusi provinsi dan kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/distribusi_provinsi%20dan_kota.png?raw=true)
 * Distribusi Provinsi:
   - Provinsi dengan jumlah sampel tertinggi: **Jawa Timur, Jawa Tengah, Sumatera Utara, Papua**
   - Provinsi dengan jumlah sampel terendah: **Kalimanatan Utara, D.I. Yogyakarta, Sulawesi Barat**
@@ -154,19 +154,19 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 
 **Univariate Analysis**
 <br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
-![Rata-rata kemiskinan per provinsi](https://github.com/user-attachments/assets/9f9a8a45-199f-4309-8f8b-ddf5556905ed)
+![Rata-rata kemiskinan per provinsi](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/provinsi.png?raw=true)
 Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1) untuk tiap provinsi. Nilai ini setara dengan proporsi rumah tangga yang diklasifikasikan miskin dalam provinsi tersebut.
 - Provinsi seperti **Papua, Papua Barat, NTT, Maluku** memiliki proporsi tertinggi dalam klasifikasi `miskin` oleh model atau label data, mencerminkan kemungkinan tingkat kesejahteraan rendah atau keterbatasan infrastruktur/layanan.
 - Terdapat banyak provinsi dengan rata-rata 0, artinya tidak ada satupun data yang diklasifikasikan `miskin` dari provinsi tersebut. Contoh: **DKI Jakarta, Jawa Barat, Jawa Tengah, Kalimantan Timur, Kalimantan Tengah, Bengkulu, Banten, dll**.
 * Dikarenakan ketimpangan distribusi data, di mana sebagian besar "kasus kemiskinan" hanya muncul dari provinsi tertentu.
 <br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
-![Rata-rata kemiskinan per kota](https://github.com/user-attachments/assets/5353fb03-88ab-470e-b591-07b988d6af56)
+![Rata-rata kemiskinan per kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/kota.png?raw=true)
 * Terdapat 514 kota unik, dan sebagian besar hanya memiliki 1 sampel. Rata-rata kemiskinan per kota adalah 0 atau 1 → **diskrit dan tidak informatif secara statistik** karena terlalu sedikit datanya per kota.
 Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkinan hanya 1 rumah tangga, dan diklasifikasikan miskin. Banyak kota besar seperti `Kota Bandung`, `Balikpapan`, `Bitung`, dll memiliki nilai 0.0.
 
 **Multivariate Analysis**
 <br/>**Heatmap Korelasi (Correlation Matrix)**
-![Correlation Matrix](https://github.com/user-attachments/assets/f623a85e-96d7-43bd-8ea7-8bbcaaaf580c)
+![Correlation Matrix](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/correlation_matrix.png?raw=true)
 <br/>**Korelasi terhadap `klasifikasi_kemiskinan`:**
   * **`persen_miskin`**: **positif kuat (0.76)** Wilayah dengan persentase penduduk miskin tinggi, cenderung masuk klasifikasi miskin.
   * Fitur lain memiliki **korelasi negatif** dengan klasifikasi kemiskinan:
@@ -180,7 +180,7 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
    * `ipm`, `pengeluaran_kapita`, `lama_sekolah`: \~0.87 Bisa jadi ada multikolinearitas. 
    * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.
 <br/>**Pairplot (Scatter Matrix)**
-![Scatter Matrix](https://github.com/user-attachments/assets/f92b06cf-556c-44ea-ad93-5ccfafbcaa29)
+![Scatter Matrix](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/scatter_matrix.png?raw=true)
 * Hubungan linier terlihat jelas antara: `pengeluaran_kapita`, `ipm`, `lama_sekolah` Korelasi kuat & searah.
 * `klasifikasi_kemiskinan` tampak sebagai bilangan diskrit (0 atau 1) di sumbu Y: Terdapat pemisahan cukup jelas pada `persen_miskin`, `ipm`, `pengeluaran_kapita`, artinya fitur-fitur ini informatif untuk membedakan status kemiskinan.
 
@@ -336,16 +336,16 @@ $$
 * **Naive Bayes** memiliki performa terendah dibanding model lain, dengan akurasi dan F1-score di bawah 90%, tetapi tetap layak jika mempertimbangkan efisiensi komputasi.
   
 3. **Analisis Hasil dari Confusion Matrix**
-* ![KNN](https://github.com/user-attachments/assets/3d59b608-af6a-46a8-867e-c84f5f806a0b)
-* ![DT](https://github.com/user-attachments/assets/b94272e2-e3d5-464a-87ea-39e969b8dcee)
-* ![RF](https://github.com/user-attachments/assets/d292f9f0-a228-499f-bee4-f768fb63ad5d)
-* ![SVM](https://github.com/user-attachments/assets/e2245a65-67d4-44a7-8a7d-762be589404e)
-* ![NB](https://github.com/user-attachments/assets/9bd1e81b-fe1c-48b2-a176-c4ff98e7a89a)
+* ![KNN](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/knn.png?raw=true)
+* ![DT](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/dt.png?raw=true)
+* ![RF](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/rf.png?raw=true)
+* ![SVM](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/svm.png?raw=true)
+* ![NB](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/nb.png?raw=true)
 
 * Confusion matrix membantu melihat detail kesalahan prediksi: Model seperti DT dan RF hampir tidak melakukan kesalahan pada kelas mayoritas (0.0) dan masih cukup baik dalam memprediksi kelas minoritas (1.0) berkat SMOTE.
 
 4. **Perbandingan Akurasi Train vs Test**
-![Perbandingan Akurasi Train vs Test](https://github.com/user-attachments/assets/79a1c4e5-7572-410e-91b1-f1895adaa7c6)
+![Perbandingan Akurasi Train vs Test](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/perbandingan.png?raw=true)
 * **Overfitting dapat terdeteksi dari gap besar antara akurasi Train dan Test.**
 * DT dan RF memiliki **akurasi train = 100%**, tetapi test tetap tinggi (\~96%) → sedikit overfitting, namun masih generalizable.
 * **SVM dan KNN** memiliki gap akurasi yang lebih kecil → model lebih general dan stabil.

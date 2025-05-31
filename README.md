@@ -347,6 +347,7 @@ $$
 
 4. **Perbandingan Akurasi Train vs Test**
 ![Perbandingan Akurasi Train vs Test](https://github.com/user-attachments/assets/e39dbdad-252f-45e1-a8c3-df23caf39292)
+![Perbandingan Akurasi Train vs Test](https://github.com/user-attachments/assets/79a1c4e5-7572-410e-91b1-f1895adaa7c6)
 * **Overfitting dapat terdeteksi dari gap besar antara akurasi Train dan Test.**
 * DT dan RF memiliki **akurasi train = 100%**, tetapi test tetap tinggi (\~96%) → sedikit overfitting, namun masih generalizable.
 * **SVM dan KNN** memiliki gap akurasi yang lebih kecil → model lebih general dan stabil.

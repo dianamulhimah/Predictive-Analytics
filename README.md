@@ -126,6 +126,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 
 **Mendeteksi Outliner**
 ![Bloxplot](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/bloxplot.png?raw=true)
+![Bloxplot](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/bloxplot.png)
 - `persen_miskin` Terlihat banyak outlier di atas (daerah dengan persentase kemiskinan sangat tinggi). Median kemiskinan sekitar 10–12%.
 - `lama_sekolah` Terdapat beberapa outlier di bawah (daerah dengan rata-rata lama sekolah < 4 tahun). Median sekitar 8–9 tahun.
 - `pengeluaran_kapita` Distribusi cukup miring ke kanan (right-skewed) dengan banyak outlier di atas. Artinya, sebagian besar daerah berpengeluaran rendah, dan hanya sedikit daerah dengan pengeluaran tinggi.
@@ -138,12 +139,13 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - `klasifikasi_kemiskinan` Mayoritas daerah masuk kategori `0` (tidak miskin), hanya sedikit yang termasuk `1` (miskin)`. Ini menunjukkan imbalance class (perlu penanganan khusus saat modeling, seperti oversampling SMOTE).
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
-<br/>**Distribusi Kelas Klasifikasi Kemiskinan**
-![Distribusi Kelas](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/distribusi_kelas.png?raw=true)
+**Distribusi Kelas Klasifikasi Kemiskinan**
+<br/>![Distribusi Kelas](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/distribusi_kelas.png?raw=true)
 * `Tidak Miskin`: sekitar 450+ sampel
 * `Miskin`: sekitar 60-70 sampel
 * Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.
-<br/>**Distribusi Provinsi dan Kota**
+
+**Distribusi Provinsi dan Kota**
 ![Distribusi provinsi dan kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/distribusi_provinsi%20dan_kota.png?raw=true)
 * Distribusi Provinsi:
   - Provinsi dengan jumlah sampel tertinggi: **Jawa Timur, Jawa Tengah, Sumatera Utara, Papua**
@@ -153,14 +155,15 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
   - Setiap kota hanya memiliki 1 sampel, ditunjukkan oleh bar setinggi 1.0 dan sangat rapat.
 
 **Univariate Analysis**
-<br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
-![Rata-rata kemiskinan per provinsi](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/provinsi.png?raw=true)
+**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
+<br/>![Rata-rata kemiskinan per provinsi](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/provinsi.png?raw=true)
 Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1) untuk tiap provinsi. Nilai ini setara dengan proporsi rumah tangga yang diklasifikasikan miskin dalam provinsi tersebut.
 - Provinsi seperti **Papua, Papua Barat, NTT, Maluku** memiliki proporsi tertinggi dalam klasifikasi `miskin` oleh model atau label data, mencerminkan kemungkinan tingkat kesejahteraan rendah atau keterbatasan infrastruktur/layanan.
 - Terdapat banyak provinsi dengan rata-rata 0, artinya tidak ada satupun data yang diklasifikasikan `miskin` dari provinsi tersebut. Contoh: **DKI Jakarta, Jawa Barat, Jawa Tengah, Kalimantan Timur, Kalimantan Tengah, Bengkulu, Banten, dll**.
 * Dikarenakan ketimpangan distribusi data, di mana sebagian besar "kasus kemiskinan" hanya muncul dari provinsi tertentu.
-<br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
-![Rata-rata kemiskinan per kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/kota.png?raw=true)
+
+**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
+<br/>![Rata-rata kemiskinan per kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/kota.png?raw=true)
 * Terdapat 514 kota unik, dan sebagian besar hanya memiliki 1 sampel. Rata-rata kemiskinan per kota adalah 0 atau 1 → **diskrit dan tidak informatif secara statistik** karena terlalu sedikit datanya per kota.
 Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkinan hanya 1 rumah tangga, dan diklasifikasikan miskin. Banyak kota besar seperti `Kota Bandung`, `Balikpapan`, `Bitung`, dll memiliki nilai 0.0.
 

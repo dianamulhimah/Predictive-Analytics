@@ -139,7 +139,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 - **Banyak outlier signifikan di hampir semua fitur Dibiarkan karena mencerminkan realitas daerah tertinggal/kaya**.
 
 **Distribusi Kelas Klasifikasi Kemiskinan**
-![Distribusi Kelas](https://github.com/user-attachments/assets/8514cbc0-53f8-4ec1-a5de-6b0dc223d4dc)<br/>
+![Distribusi Kelas](https://github.com/user-attachments/assets/8514cbc0-53f8-4ec1-a5de-6b0dc223d4dc)
 * `Tidak Miskin`: sekitar 450+ sampel
 * `Miskin`: sekitar 60-70 sampel
 * Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.

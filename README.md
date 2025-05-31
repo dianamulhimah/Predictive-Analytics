@@ -141,12 +141,14 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 
 **Distribusi Kelas Klasifikasi Kemiskinan**
 <br/>![Distribusi Kelas](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/distribusi_kelas.png?raw=true)
+<br/>![Distribusi Kelas](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/distribusi_kelas.png)
 * `Tidak Miskin`: sekitar 450+ sampel
 * `Miskin`: sekitar 60-70 sampel
 * Ketidakseimbangan Kelas(class imbalance) sangat mencolok. Mayoritas data berasal dari kelas "Tidak Miskin" (sekitar 85–90%).  Ini berisiko menyebabkan model machine learning bias terhadap kelas mayoritas.
 
 **Distribusi Provinsi dan Kota**
 ![Distribusi provinsi dan kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/distribusi_provinsi%20dan_kota.png?raw=true)
+![Distribusi Provinsi dan Kota](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/distribusi_provinsi%20dan_kota.png)
 * Distribusi Provinsi:
   - Provinsi dengan jumlah sampel tertinggi: **Jawa Timur, Jawa Tengah, Sumatera Utara, Papua**
   - Provinsi dengan jumlah sampel terendah: **Kalimanatan Utara, D.I. Yogyakarta, Sulawesi Barat**
@@ -157,6 +159,7 @@ _ `Persentase Rumah Tangga yang Memiliki Akses terhadap Sanitasi Layak (%)`: Pro
 **Univariate Analysis**
 <br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Provinsi**
 <br/>![Rata-rata kemiskinan per provinsi](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/provinsi.png?raw=true)
+<br/>![Rata-rata Kemiskinan per Provinsi](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/provinsi.png)
 Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1) untuk tiap provinsi. Nilai ini setara dengan proporsi rumah tangga yang diklasifikasikan miskin dalam provinsi tersebut.
 - Provinsi seperti **Papua, Papua Barat, NTT, Maluku** memiliki proporsi tertinggi dalam klasifikasi `miskin` oleh model atau label data, mencerminkan kemungkinan tingkat kesejahteraan rendah atau keterbatasan infrastruktur/layanan.
 - Terdapat banyak provinsi dengan rata-rata 0, artinya tidak ada satupun data yang diklasifikasikan `miskin` dari provinsi tersebut. Contoh: **DKI Jakarta, Jawa Barat, Jawa Tengah, Kalimantan Timur, Kalimantan Tengah, Bengkulu, Banten, dll**.
@@ -164,12 +167,14 @@ Grafik ini menunjukkan rata-rata nilai target klasifikasi `kemiskinan` (0 atau 1
 
 <br/>**Rata-rata Klasifikasi Kemiskinan Berdasarkan Kota**
 <br/>![Rata-rata kemiskinan per kota](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/kota.png?raw=true)
+<br/>![Rata-rata Kemiskinan per Kota](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/kota.png)
 * Terdapat 514 kota unik, dan sebagian besar hanya memiliki 1 sampel. Rata-rata kemiskinan per kota adalah 0 atau 1 → **diskrit dan tidak informatif secara statistik** karena terlalu sedikit datanya per kota.
 Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkinan hanya 1 rumah tangga, dan diklasifikasikan miskin. Banyak kota besar seperti `Kota Bandung`, `Balikpapan`, `Bitung`, dll memiliki nilai 0.0.
 
 **Multivariate Analysis**
 <br/>**Heatmap Korelasi (Correlation Matrix)**
 ![Correlation Matrix](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/correlation_matrix.png?raw=true)
+![Correlation Matrix](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/correlation_matrix.png)
 <br/>**Korelasi terhadap `klasifikasi_kemiskinan`:**
   * **`persen_miskin`**: **positif kuat (0.76)** Wilayah dengan persentase penduduk miskin tinggi, cenderung masuk klasifikasi miskin.
   * Fitur lain memiliki **korelasi negatif** dengan klasifikasi kemiskinan:
@@ -185,6 +190,7 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
 
 <br/>**Pairplot (Scatter Matrix)**
 <br/>![Scatter Matrix](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/scatter_matrix.png?raw=true)
+<br/>![Scatter Matrix](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/scatter_matrix.png)
 * Hubungan linier terlihat jelas antara: `pengeluaran_kapita`, `ipm`, `lama_sekolah` Korelasi kuat & searah.
 * `klasifikasi_kemiskinan` tampak sebagai bilangan diskrit (0 atau 1) di sumbu Y: Terdapat pemisahan cukup jelas pada `persen_miskin`, `ipm`, `pengeluaran_kapita`, artinya fitur-fitur ini informatif untuk membedakan status kemiskinan.
 
@@ -345,11 +351,16 @@ $$
 * ![RF](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/rf.png?raw=true)
 * ![SVM](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/svm.png?raw=true)
 * ![NB](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/nb.png?raw=true)
-
-* Confusion matrix membantu melihat detail kesalahan prediksi: Model seperti DT dan RF hampir tidak melakukan kesalahan pada kelas mayoritas (0.0) dan masih cukup baik dalam memprediksi kelas minoritas (1.0) berkat SMOTE.
+* ![KNN](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/knn.png)
+* ![DT](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/dt.png)
+* ![RF](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/rf.png)
+* ![SVM](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/svm.png)
+* ![NB](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/nb.png)
+Confusion matrix membantu melihat detail kesalahan prediksi: Model seperti DT dan RF hampir tidak melakukan kesalahan pada kelas mayoritas (0.0) dan masih cukup baik dalam memprediksi kelas minoritas (1.0) berkat SMOTE.
 
 4. **Perbandingan Akurasi Train vs Test**
 ![Perbandingan Akurasi Train vs Test](https://github.com/dianamulhimah/Predictive-Analytics/blob/main/image/perbandingan.png?raw=true)
+![Perbandingan Akurasi Train vs Test](https://raw.githubusercontent.com/dianamulhimah/Predictive-Analytics/main/image/perbandingan.png)
 * **Overfitting dapat terdeteksi dari gap besar antara akurasi Train dan Test.**
 * DT dan RF memiliki **akurasi train = 100%**, tetapi test tetap tinggi (\~96%) → sedikit overfitting, namun masih generalizable.
 * **SVM dan KNN** memiliki gap akurasi yang lebih kecil → model lebih general dan stabil.

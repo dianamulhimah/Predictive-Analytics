@@ -178,8 +178,8 @@ Contoh: `Deiyai`, `Manokwari`, `Manggarai`, dll memiliki nilai 1.0 → kemungkin
 <br/>**Korelasi antar fitur:**
   * Korelasi **sangat tinggi** antara:
    * `ipm`, `pengeluaran_kapita`, `lama_sekolah`: \~0.87 Bisa jadi ada multikolinearitas. 
-   * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.<br/>
-**Pairplot (Scatter Matrix)**
+   * `akses_sanitasi` & `ipm`: 0.70 Akses sanitasi bisa menjadi indikator pembangunan manusia.
+<br/>**Pairplot (Scatter Matrix)**
 ![Scatter Matrix](https://github.com/user-attachments/assets/f92b06cf-556c-44ea-ad93-5ccfafbcaa29)
 * Hubungan linier terlihat jelas antara: `pengeluaran_kapita`, `ipm`, `lama_sekolah` Korelasi kuat & searah.
 * `klasifikasi_kemiskinan` tampak sebagai bilangan diskrit (0 atau 1) di sumbu Y: Terdapat pemisahan cukup jelas pada `persen_miskin`, `ipm`, `pengeluaran_kapita`, artinya fitur-fitur ini informatif untuk membedakan status kemiskinan.
